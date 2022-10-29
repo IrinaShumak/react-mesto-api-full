@@ -1,4 +1,4 @@
-.popup__confirmation-sign-up {
+.popup__confirmation-signup {
   padding: 0;
   margin: 60px auto 32px auto;
   width: 120px;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 880px) {
-  .popup__confirmation-sign-up {
+  .popup__confirmation-signup {
     margin-top: 50px;
     margin-bottom: 40px;    
   }

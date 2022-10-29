@@ -80,5 +80,5 @@ body {
 @import url(./blocks/popup/_location/popup_location_element.css);
 @import url(./blocks/popup/__photo/popup__photo.css);
 @import url(./blocks/popup/__image-heading/popup__image-heading.css);
-@import url(./blocks/popup/__confirmation-sign-up/popup__confirmation-sign-up.css);
+@import url(./blocks/popup/__confirmation-signup/popup__confirmation-signup.css);
 @import url(./blocks/popup/__title/_location/popup__title_location_infoTooltip.css);

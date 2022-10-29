@@ -64,7 +64,7 @@ function Register (props) {
         minLength="2"        
       />            
       <button type="submit" className={'entry-form__button'}>Зарегистрироваться</button>                
-      <Link to="/sign-in" className="entry-form__login-link">Уже зарегистрированы? Войти</Link>
+      <Link to="/signin" className="entry-form__login-link">Уже зарегистрированы? Войти</Link>
         
     </form>
   )

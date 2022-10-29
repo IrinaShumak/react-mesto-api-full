@@ -9,10 +9,10 @@ function Header(props) {
   return (    
     <header className="header">
       <div className="header__logo" />
-      { (path.pathname === '/sign-up') ? (
-          <Link to="/sign-in" className="header__link">Войти</Link>
-        ) : (path.pathname === '/sign-in') ? (
-          <Link to="/sign-up" className="header__link">Регистрация</Link> 
+      { (path.pathname === '/signup') ? (
+          <Link to="/signin" className="header__link">Войти</Link>
+        ) : (path.pathname === '/signin') ? (
+          <Link to="/signup" className="header__link">Регистрация</Link> 
         ) : (
           <>
             <Menu email={props.email} signOut={props.signOut} location="inside"/>

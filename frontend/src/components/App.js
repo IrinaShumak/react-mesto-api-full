@@ -185,7 +185,7 @@ function App () {
 
   function signOut(){
     localStorage.removeItem('jwt');
-    history.push('/sign-in');
+    history.push('/signin');
     handleDropDownMenuClosing ();
     handleLogin(false);
   }     
