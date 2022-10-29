@@ -1,0 +1,14 @@
+.profile__avatar-button {  
+  appearance: none;
+  border: 0;
+  position: absolute;
+  right: 47px;
+  bottom: 47px;
+  background-color: rgba(0,0,0,0);
+  background-image: url(../../../images/profile-avatar-button.svg);
+  min-height: 26px;
+  min-width: 26px;
+  opacity: 0;
+  z-index: 51;
+  transition: opacity linear 0.2s;  
+}

@@ -1,0 +1,20 @@
+.header__info {  
+  font-family: inherit;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  margin: 0 0 45px 0;
+  padding: 0;
+  display: flex;
+  min-width: 221px;
+  max-height: 22px;
+  list-style: none; 
+}
+
+@media screen and (max-width: 915px) {
+  .header__info {
+    margin-right: 21px;
+    margin-bottom: 33px; 
+  }
+}

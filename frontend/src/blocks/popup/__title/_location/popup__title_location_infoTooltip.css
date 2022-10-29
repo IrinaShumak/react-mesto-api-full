@@ -1,0 +1,14 @@
+.popup__title_location_infoTooltip{
+  text-align: center;
+  max-width: 358px;
+  margin: 0 auto 60px auto;
+}
+
+@media screen and (max-width: 565px) {
+  .popup__title_location_infoTooltip {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 50px;
+    max-width: 280px;
+  }
+}

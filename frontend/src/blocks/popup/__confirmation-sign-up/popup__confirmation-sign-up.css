@@ -1,0 +1,17 @@
+.popup__confirmation-sign-up {
+  padding: 0;
+  margin: 60px auto 32px auto;
+  width: 120px;
+  height: 120px;
+  background-image: url(../../../images/popup-confirmation-icon.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;    
+}
+
+@media screen and (max-width: 880px) {
+  .popup__confirmation-sign-up {
+    margin-top: 50px;
+    margin-bottom: 40px;    
+  }
+}

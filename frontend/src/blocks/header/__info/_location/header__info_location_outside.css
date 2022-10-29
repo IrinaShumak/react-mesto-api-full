@@ -1,0 +1,18 @@
+.header__info_location_outside {
+  box-sizing: border-box;  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  width: 100%;
+  max-height: 142px;  
+}
+
+@media screen and (min-width: 565px) {
+  .header__info_location_outside {
+    display: none;
+  }
+}

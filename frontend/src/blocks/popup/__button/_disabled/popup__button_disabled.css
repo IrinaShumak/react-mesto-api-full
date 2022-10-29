@@ -1,0 +1,11 @@
+.popup__button_disabled {
+  background-image: url(../../../../images/popup-save-inactive.svg);
+  color: #000000;
+  cursor: auto;
+  opacity: 0.2;
+  background-color: rgba(0,0,0,0);
+}
+
+.popup__button:hover {
+  opacity: 0.2;
+}

@@ -1,0 +1,8 @@
+.popup__error_bottom {
+  top: 200px;
+}
+
+@media screen and (max-width: 565px) {
+  .popup__error_bottom {    
+    top: 213px;    
+}}
