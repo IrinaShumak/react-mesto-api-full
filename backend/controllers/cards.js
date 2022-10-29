@@ -51,11 +51,11 @@ module.exports.getAllCards = (req, res, next) => {
   const { origin } = req.headers;
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
-    res.header('Access-Control-Allow-Origin', origin);
+
+    Card.find({})
+      .then((cards) => res.header('Access-Control-Allow-Origin', origin).send({ data: cards }))
+      .catch(next);
   }
-  Card.find({})
-    .then((cards) => res.send({ data: cards }))
-    .catch(next);
 };
 
 module.exports.likeCard = (req, res, next) => {
