@@ -4,6 +4,12 @@ const NotFoundError = require('../errors/not-found-err');
 const IncorrectInputError = require('../errors/incorrect-input-err');
 const ForbiddenError = require('../errors/forbidden-err');
 
+const allowedCors = [
+  'https://irinashumak.students.nomoredomains.icu',
+  'http://irinashumak.students.nomoredomains.icu',
+  'localhost:3000',
+];
+
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   const id = req.user._id;
@@ -42,6 +48,11 @@ module.exports.deleteCard = (req, res, next) => {
 };
 
 module.exports.getAllCards = (req, res, next) => {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   Card.find({})
     .then((cards) => res.send({ data: cards }))
     .catch(next);
