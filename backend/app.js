@@ -10,6 +10,12 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-err');
 const auth = require('./middlewares/auth');
 
+const allowedCors = [
+  'https://irinashumak.students.nomoredomains.icu',
+  'http://irinashumak.students.nomoredomains.icu',
+  'localhost:3000',
+];
+
 const { PORT = 3000 } = process.env;
 
 const app = express();
@@ -20,6 +26,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost:27017/mestodb', {});
 
 app.use(requestLogger); // подключаем логгер запросов
+
+app.use((req, res, next) => {
+  const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
+  // проверяем, что источник запроса есть среди разрешённых
+  if (allowedCors.includes(origin)) {
+    // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  next();
+});
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
