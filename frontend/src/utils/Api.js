@@ -96,7 +96,7 @@ class Api {
 const jwt = localStorage.getItem('jwt');
 
 export const api = new Api({
-  baseUrl: 'https://api.irinashumak.students.nomoredomains.icu',
+  baseUrl: 'https://irinashumak.students.nomoredomains.icu',
   headers: {
     authorization: `${jwt}`,
     'Content-Type': 'application/json'
