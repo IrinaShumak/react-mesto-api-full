@@ -206,7 +206,7 @@ function App () {
   React.useEffect(() => {
     if (isLoggedIn) {       
       api.takeUserInfo()
-        .then((data) => {         
+        .then(({data}) => {         
           setCurrentUser(data);    
         })        
         .catch((err) => {
