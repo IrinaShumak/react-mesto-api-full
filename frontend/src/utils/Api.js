@@ -58,6 +58,7 @@ class Api {
 
   takeUserInfo () {
     return fetch(`${this._url}/users/me`, {
+      credentials: 'include',
       headers: {
         authorization: `${this._token}`
       } 
