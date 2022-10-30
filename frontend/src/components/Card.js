@@ -11,7 +11,7 @@ function Card (props) {
     `element__trash-button ${isOwn && 'element__trash-button_visible'}`
   );
 
-  const isLiked = props.card.likes.some(i => i._id === currentUser._id);
+  const isLiked = props.card.likes.some(i => i === currentUser._id);
   const cardLikeButtonClassName = (
     `element__like-button ${isLiked && 'element__like-button_active'}`
   );
