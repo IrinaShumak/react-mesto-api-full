@@ -15,8 +15,7 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._url}/cards`, {
-      credentials: 'include',
+    return fetch(`${this._url}/cards`, {      
       headers: {
         authorization: `${this._token}`
       }
@@ -25,8 +24,7 @@ class Api {
   }
 
   addNewCards ({name, link}) {
-    return fetch(`${this._url}/cards`, {
-      credentials: 'include',
+    return fetch(`${this._url}/cards`, {      
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -38,8 +36,7 @@ class Api {
   }
 
   updateProfileInfo ({name, description}) { 
-    return fetch(`${this._url}/users/me`, {
-      credentials: 'include',
+    return fetch(`${this._url}/users/me`, {      
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -51,8 +48,7 @@ class Api {
   }
  
   updateAvatar ({avatar}) {
-    return fetch(`${this._url}/users/me/avatar`, {
-      credentials: 'include',
+    return fetch(`${this._url}/users/me/avatar`, {      
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({avatar})
@@ -61,8 +57,7 @@ class Api {
   }
 
   takeUserInfo () {
-    return fetch(`${this._url}/users/me`, {
-      credentials: 'include',
+    return fetch(`${this._url}/users/me`, {      
       headers: {
         authorization: `${this._token}`
       } 
@@ -71,8 +66,7 @@ class Api {
   }
 
   likePhoto (id, method) {
-    return fetch(`${this._url}/cards/${id}/likes`, {
-      credentials: 'include',
+    return fetch(`${this._url}/cards/${id}/likes`, {      
       method: `${method}`,
       headers: {
         authorization: `${this._token}`      
@@ -82,8 +76,7 @@ class Api {
   }
 
   deleteCard(id) {
-    return fetch(`${this._url}/cards/${id}`, {
-      credentials: 'include',
+    return fetch(`${this._url}/cards/${id}`, {      
       method: 'DELETE',
       headers: {
         authorization: `${this._token}`      
@@ -96,7 +89,7 @@ class Api {
 const jwt = localStorage.getItem('jwt');
 
 export const api = new Api({
-  baseUrl: 'https://irinashumak.students.nomoredomains.icu',
+  baseUrl: 'https://api.irinashumak.students.nomoredomains.icu',
   headers: {
     authorization: `${jwt}`,
     'Content-Type': 'application/json'
