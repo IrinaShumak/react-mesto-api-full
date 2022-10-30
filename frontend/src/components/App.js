@@ -74,7 +74,7 @@ function App () {
   function handleUpdateUser ({name, description}) {
     setIsLoading(true);    
     api.updateProfileInfo({name, description})
-      .then((data) => {      
+      .then(({data}) => {      
         setCurrentUser(data);
         closeAllPopups();
       })
@@ -89,7 +89,7 @@ function App () {
   function handleUpdateAvatar ({avatar}) {
     setIsLoading(true);
     api.updateAvatar({avatar})
-      .then((data) => {      
+      .then(({data}) => {      
         setCurrentUser(data);
         closeAllPopups();
       })
@@ -203,7 +203,7 @@ function App () {
         });
     }    
   }, [isLoggedIn])
-    
+
   React.useEffect(() => {
     if (isLoggedIn) {        
       api.getInitialCards()
