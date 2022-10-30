@@ -71,9 +71,9 @@ function App () {
     setConfirmationIcon('');  
   }
   
-  function handleUpdateUser ({name, about}) {
+  function handleUpdateUser ({name, description}) {
     setIsLoading(true);    
-    api.updateProfileInfo({name, about})
+    api.updateProfileInfo({name, description})
       .then(({data}) => {
         console.log(data);      
         setCurrentUser(data);
