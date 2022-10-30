@@ -74,8 +74,7 @@ function App () {
   function handleUpdateUser ({name, description}) {
     setIsLoading(true);    
     api.updateProfileInfo({name, description})
-      .then(({data}) => {
-        console.log(data);      
+      .then(({data}) => {              
         setCurrentUser(data);
         closeAllPopups();
       })
@@ -118,9 +117,7 @@ function App () {
   }
 
   function handleCardLike(card) {    
-    const isLiked = card.likes.some(i => i === currentUser._id);
-    console.log (currentUser._id);
-    console.log (currentUser, isLiked, card);
+    const isLiked = card.likes.some(i => i === currentUser._id);    
     const method = !isLiked ? "PUT" : "DELETE";
     api.likePhoto(card._id, method)
       .then(({data}) => {
