@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.irinashumak.students.nomoredomains.icu/';
+export const BASE_URL = 'https://irinashumak.students.nomoredomains.icu/';
 
 const getResponseData = (res) => {
   if (res.ok) {
