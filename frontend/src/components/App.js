@@ -104,8 +104,8 @@ function App () {
   function handleAddPlaceSubmit ({name, link}) {
     setIsLoading(true);
     api.addNewCards ({name, link})
-      .then((newCard) => {      
-        setCards([newCard, ...cards]);
+      .then(({data}) => {      
+        setCards([data, ...cards]);
         closeAllPopups();        
       })
       .catch((err) => {
@@ -120,8 +120,8 @@ function App () {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     const method = !isLiked ? "PUT" : "DELETE";
     api.likePhoto(card._id, method)
-      .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+      .then(({data}) => {
+        setCards((state) => state.map((c) => c._id === card._id ? data : c));
       })
       .catch((err) => {
         console.log('Ошибка. Лайк не сработал: ', err); 
