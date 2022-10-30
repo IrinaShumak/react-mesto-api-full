@@ -71,10 +71,11 @@ function App () {
     setConfirmationIcon('');  
   }
   
-  function handleUpdateUser ({name, description}) {
+  function handleUpdateUser ({name, about}) {
     setIsLoading(true);    
-    api.updateProfileInfo({name, description})
-      .then(({data}) => {      
+    api.updateProfileInfo({name, about})
+      .then(({data}) => {
+        console.log(data);      
         setCurrentUser(data);
         closeAllPopups();
       })
