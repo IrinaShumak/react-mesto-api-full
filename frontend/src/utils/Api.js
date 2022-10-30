@@ -14,10 +14,12 @@ class Api {
     return Promise.reject(`Что-то пошло не так: ${res.status}`);
   }
 
+  _getToken = () => localStorage.getItem('jwt');
+
   getInitialCards() {
     return fetch(`${this._url}/cards`, {      
       headers: {
-        authorization: `${this._token}`
+        authorization: `Bearer ${this._getToken()}`
       }
     })
     .then(this._getResponseData);
@@ -26,7 +28,10 @@ class Api {
   addNewCards ({name, link}) {
     return fetch(`${this._url}/cards`, {      
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${this._getToken()}`
+      },
       body: JSON.stringify({
         name,
         link
@@ -38,7 +43,10 @@ class Api {
   updateProfileInfo ({name, description}) { 
     return fetch(`${this._url}/users/me`, {      
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${this._getToken()}`
+      },
       body: JSON.stringify({
         name: name,
         about: description
@@ -50,7 +58,10 @@ class Api {
   updateAvatar ({avatar}) {
     return fetch(`${this._url}/users/me/avatar`, {      
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${this._getToken()}`
+      },
       body: JSON.stringify({avatar})
     })
     .then(this._getResponseData)
@@ -59,7 +70,7 @@ class Api {
   takeUserInfo () {
     return fetch(`${this._url}/users/me`, {      
       headers: {
-        authorization: `${this._token}`
+        authorization: `Bearer ${this._getToken()}`
       } 
     })
     .then(this._getResponseData)
@@ -69,7 +80,7 @@ class Api {
     return fetch(`${this._url}/cards/${id}/likes`, {      
       method: `${method}`,
       headers: {
-        authorization: `${this._token}`      
+        authorization: `Bearer ${this._getToken()}`      
       }
     })
     .then(this._getResponseData)
@@ -79,19 +90,17 @@ class Api {
     return fetch(`${this._url}/cards/${id}`, {      
       method: 'DELETE',
       headers: {
-        authorization: `${this._token}`      
+        authorization: `Bearer ${this._getToken()}`       
       }
     })
     .then(this._getResponseData)
   }
 }
 
-const jwt = localStorage.getItem('jwt');
 
 export const api = new Api({
   baseUrl: 'https://api.irinashumak.students.nomoredomains.icu',
-  headers: {
-    authorization: `${jwt}`,
+  headers: {    
     'Content-Type': 'application/json'
   }
 });
