@@ -22,13 +22,13 @@ import {Route, Switch, useHistory} from 'react-router-dom';
 
 function App () {
 
+  const [currentUser, setCurrentUser] = React.useState(null);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
   const [cardForDeletion, setCardForDeletion] = React.useState(null);
-  const [selectedCard, setSelectedCard] = React.useState(null);
-  const [currentUser, setCurrentUser] = React.useState(null);
+  const [selectedCard, setSelectedCard] = React.useState(null);  
   const [cards, setCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -192,19 +192,6 @@ function App () {
     handleLogin(false);
   }     
     
-    
-  React.useEffect(() => {
-    if (isLoggedIn) {        
-      api.getInitialCards()
-        .then(({data}) => {
-          setCards(data)
-        })
-        .catch((err) => {
-          console.log('Ошибка. Карточки не могут быть загружены: ', err);
-        }); 
-    }     
-  }, [isLoggedIn])
-
   React.useEffect(() => {
     if (isLoggedIn) {       
       api.takeUserInfo()
@@ -216,6 +203,18 @@ function App () {
         });
     }    
   }, [isLoggedIn])
+    
+  React.useEffect(() => {
+    if (isLoggedIn) {        
+      api.getInitialCards()
+        .then(({data}) => {
+          setCards(data)
+        })
+        .catch((err) => {
+          console.log('Ошибка. Карточки не могут быть загружены: ', err);
+        }); 
+    }     
+  }, [isLoggedIn])  
 
   React.useEffect(() => {
     checkToken();  
