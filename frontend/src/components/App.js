@@ -119,7 +119,7 @@ function App () {
   function handleCardLike(card) {    
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     console.log (currentUser._id);
-    console.log (currentUser);
+    console.log (currentUser, isLiked);
     const method = !isLiked ? "PUT" : "DELETE";
     api.likePhoto(card._id, method)
       .then(({data}) => {
