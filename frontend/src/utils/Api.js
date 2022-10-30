@@ -16,6 +16,7 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
+      credentials: 'include',
       headers: {
         authorization: `${this._token}`
       }
@@ -25,6 +26,7 @@ class Api {
 
   addNewCards ({name, link}) {
     return fetch(`${this._url}/cards`, {
+      credentials: 'include',
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -37,6 +39,7 @@ class Api {
 
   updateProfileInfo ({name, description}) { 
     return fetch(`${this._url}/users/me`, {
+      credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -49,6 +52,7 @@ class Api {
  
   updateAvatar ({avatar}) {
     return fetch(`${this._url}/users/me/avatar`, {
+      credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({avatar})
@@ -68,6 +72,7 @@ class Api {
 
   likePhoto (id, method) {
     return fetch(`${this._url}/cards/${id}/likes`, {
+      credentials: 'include',
       method: `${method}`,
       headers: {
         authorization: `${this._token}`      
@@ -78,6 +83,7 @@ class Api {
 
   deleteCard(id) {
     return fetch(`${this._url}/cards/${id}`, {
+      credentials: 'include',
       method: 'DELETE',
       headers: {
         authorization: `${this._token}`      
