@@ -194,8 +194,8 @@ function App () {
   React.useEffect(() => {
     if (isLoggedIn) {        
       api.getInitialCards()
-        .then(({initialCards}) => {
-          setCards(initialCards)
+        .then(({data}) => {
+          setCards(data)
         })
         .catch((err) => {
           console.log('Ошибка. Карточки не могут быть загружены: ', err);
