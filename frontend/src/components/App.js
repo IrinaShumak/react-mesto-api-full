@@ -194,7 +194,7 @@ function App () {
   React.useEffect(() => {
     if (isLoggedIn) {        
       api.getInitialCards()
-        .then((initialCards) => {
+        .then(({initialCards}) => {
           setCards(initialCards)
         })
         .catch((err) => {

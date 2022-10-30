@@ -9,7 +9,7 @@ module.exports.createCard = (req, res, next) => {
   const id = req.user._id;
 
   Card.create({ name, link, owner: id })
-    .then((card) => res.send(card))
+    .then((card) => res.send({ card }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new IncorrectInputError('Переданы некорректные данные при создании карточки.'));
@@ -43,7 +43,7 @@ module.exports.deleteCard = (req, res, next) => {
 
 module.exports.getAllCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send(cards))
+    .then((cards) => res.send({ cards }))
     .catch(next);
 };
 
@@ -75,7 +75,7 @@ module.exports.dislikeCard = (req, res, next) => {
   )
     .then((card) => {
       if (card) {
-        res.send({ data: card });
+        res.send(card);
       } else { next(new NotFoundError('Передан несуществующий _id карточки.')); }
     })
     .catch((err) => {
