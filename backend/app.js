@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 require('dotenv').config();
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
@@ -15,6 +16,7 @@ const cors = require('./middlewares/cors');
 const { PORT = 5000 } = process.env;
 
 const app = express();
+app.use(helmet());
 
 app.use(cors);
 app.use(bodyParser.json());
